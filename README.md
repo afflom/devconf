@@ -1,3 +1,23 @@
+# DEVCONF UOR DEMO
+
+1. Build the images
+`docker build -f Containerfile . -t localhost/devconf:demo`
+
+2. Run the image with networking bridged
+`docker run --network=host -it localhost/devconf:demo bash`
+
+3. Execute the push script (`--plain-http=true` is optional)
+`./client-push.sh example.com/org/collection:tag --plain-http=true
+
+4. Execute the pull script (`--plain-http=true` is optional)(the 3rd argument can be `prod` or `dev`)
+`./client-push.sh example.com/org/collection:tag output_dir dev --plain-http=true`
+
+5. Open http://localhost:8081 in your web browser to view the changes
+
+
+
+
+
 # DevConf
 
 This branch contains prep work for new devconf.info web design.
