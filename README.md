@@ -7,7 +7,7 @@
 `docker run --network=host -it localhost/devconf:demo bash`
 
 3. Execute the push script (`--plain-http=true` is optional)
-`./client-push.sh example.com/org/collection:tag --plain-http=true
+`./client-push.sh example.com/org/collection:tag --plain-http=true`
 
 4. Execute the pull script (`--plain-http=true` is optional)(the 3rd argument can be `prod` or `dev`)
 `./client-push.sh example.com/org/collection:tag output_dir dev --plain-http=true`
