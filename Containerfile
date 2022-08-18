@@ -6,7 +6,6 @@ RUN dnf install -y\
         composer\
         npm\
         go\
-        jq\
         git &&\
     git clone https://github.com/devconfcz/devconf.git &&\
     cd devconf &&\
@@ -49,6 +48,8 @@ COPY index.html .
 FROM fedora AS target
 
 WORKDIR /devconf
+
+RUN dnf install -y jq
 
 COPY --from=build /devconf/client .
 COPY --from=build /devconf/push/ ./push/
