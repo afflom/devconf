@@ -6,6 +6,7 @@ RUN dnf install -y\
         composer\
         npm\
         go\
+        jq\
         git &&\
     git clone https://github.com/devconfcz/devconf.git &&\
     cd devconf &&\
@@ -39,12 +40,11 @@ RUN mkdir push &&\
     mv build_production push/ &&\
     cp caddy ./push/
 
-
-
 COPY dataset-config.yaml .
 
 COPY client-push.sh .
 COPY client-pull.sh .
+COPY index.html .
 
 FROM fedora AS target
 
@@ -55,3 +55,5 @@ COPY --from=build /devconf/push/ ./push/
 COPY --from=build /devconf/dataset-config.yaml .
 COPY --from=build /devconf/client-push.sh .
 COPY --from=build /devconf/client-pull.sh .
+COPY --from=build /devconf/index.html .
+
